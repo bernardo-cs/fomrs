@@ -1,4 +1,4 @@
 <p>
-  <input (input)='null' type="text" #input>
-  <span *ngFor="let sug of filteredOptions(input)">{{sug | json}}</span>
+  <input (input)='filterOptions($event.target.value)' type="text">
+  <span *ngFor="let sug of options">{{sug | json}}</span>
 </p>
