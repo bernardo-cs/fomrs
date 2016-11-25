@@ -1,0 +1,28 @@
+<form [formGroup]="form">
+    <span>
+      {{form.value | json}}
+    </span>
+  <div *ngFor="let formField of getFormFields()">
+    <label [attr.for]="formField.key">{{formField.label}}</label>
+    <div [ngSwitch]="formField.type">
+      <div *ngSwitchCase="3">
+        <select [id]="formField.key"
+                [formControlName]="formField.key">
+
+          <option *ngFor="let opt of formField.suggestions"
+                  [value]="opt.name">{{opt.id}}
+          </option>
+        </select>
+      </div>
+      <app-search-input
+        *ngSwitchCase="1"
+        [formControlName]="formField.key"
+        [formField]="formField"></app-search-input>
+      <app-search-input
+        *ngSwitchCase="2"
+        [formControlName]="formField.key"
+        [formField]="formField"></app-search-input>
+    </div>
+  </div>
+</form>
+
