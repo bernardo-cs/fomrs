@@ -5,12 +5,14 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { FormComponent } from "./form/form.component";
 import { SearchInputComponent } from "./search-input/search-input.component";
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

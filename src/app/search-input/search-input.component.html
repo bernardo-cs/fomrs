@@ -1,13 +1,18 @@
 <div>
   <div *ngFor="let sug of selectedOptions">
-    <span>{{sug | json}}</span>
-    <button (click)="removeOption(sug)">-</button>
+    <span>{{sug.name}}</span>
+    <button (click)="removeOption(sug, input)"
+            type="button">-</button>
   </div>
 
-  <input (input)='filterOptions($event.target.value)' type="text">
+  <input
+    (keyup.enter)="submit($event)"
+    (input)='filterOptions($event.target.value)'
+    type="text" #input>
 
-  <div *ngFor="let sug of options">
-    <span>{{sug | json}}</span>
-    <button (click)="addOption(sug)">+</button>
+  <div *ngFor="let sug of availableOptions | filter: selectedOptions">
+    <span>{{sug.name}}</span>
+    <button (click)="addOption(sug, input)"
+            type="button">+</button>
   </div>
 </div>

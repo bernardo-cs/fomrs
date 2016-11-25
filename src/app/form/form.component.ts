@@ -20,23 +20,23 @@ export class FormComponent implements OnInit {
       ]
     }),
     new FormField({
-      key: 'countries',
-      label: 'Countries',
+      key: 'categories',
+      label: 'Categories',
       type: 2,
       suggestions: [
-        {name: 'UK', id: 1},
-        {name: 'Germany', id: 2},
-        {name: 'Spain', id: 3}
+        {name: 'Lipsticks', id: 1},
+        {name: 'Perfumes', id: 2},
+        {name: 'Cake', id: 3}
       ]
     }),
     new FormField({
-      key: 'countries',
-      label: 'Countries',
+      key: 'scopes',
+      label: 'Scopes',
       type: 3,
       suggestions: [
-        {name: 'UK', id: 1},
-        {name: 'Germany', id: 2},
-        {name: 'Spain', id: 3}
+        {name: 'This', id: 1},
+        {name: 'That', id: 2},
+        {name: 'null', id: 3}
       ]
     })
   ];
