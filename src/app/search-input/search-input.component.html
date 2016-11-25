@@ -1,4 +1,13 @@
-<p>
+<div>
+  <div *ngFor="let sug of selectedOptions">
+    <span>{{sug | json}}</span>
+    <button (click)="removeOption(sug)">-</button>
+  </div>
+
   <input (input)='filterOptions($event.target.value)' type="text">
-  <span *ngFor="let sug of options">{{sug | json}}</span>
-</p>
+
+  <div *ngFor="let sug of options">
+    <span>{{sug | json}}</span>
+    <button (click)="addOption(sug)">+</button>
+  </div>
+</div>

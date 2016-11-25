@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
-import { FormField } from "../form-field";
 
 @Component({
   selector: 'app-search-input',
@@ -14,24 +13,36 @@ import { FormField } from "../form-field";
 export class SearchInputComponent implements OnInit, ControlValueAccessor {
   @Input() formField: any;
   _onChange: (value: any) => void;
-  options: string[];
+  options: any[];
+  selectedOptions = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.options = this.formField.suggestions.map(sug => sug.name.toLowerCase());
+    this.options = this.formField.suggestions;
   }
 
   filterOptions(value) {
-    console.log(value);
     const inputString = value.toLowerCase();
 
     this.options = this
       .formField
-      .suggestions
-      .map(sug => sug.name.toLowerCase());
+      .suggestions;
 
-    if (inputString.length > 0) {this.options = this.options.filter(sug => sug.indexOf(inputString) !== -1) }
+    if (inputString.length > 0) {
+      this.options = this.options
+          .filter(sug => sug.name.toLowerCase().indexOf(inputString) !== -1)
+    }
+  }
+
+  addOption(option) {
+    this.selectedOptions.push(option);
+    this.options.splice(this.options.indexOf(option), 1);
+  }
+
+  removeOption(option) {
+    this.options.push(option);
+    this.selectedOptions.splice(this.options.indexOf(option), 1);
   }
 
   writeValue(value: any) { }
